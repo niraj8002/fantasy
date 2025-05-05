@@ -1,7 +1,8 @@
 import React from "react";
 import { FaPlay, FaTrophy, FaUsers, FaChartLine } from "react-icons/fa";
+// import Link from "react-scroll";
 
-export const HeroSection = () => {
+const HeroSection = () => {
   return (
     <section className="relative bg-gray-900 text-white pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -27,7 +28,14 @@ export const HeroSection = () => {
                 <FaPlay className="mr-2" /> Join Now - It's Free!
               </button>
               <button className="bg-transparent hover:bg-gray-800 text-white font-semibold py-3 px-6 border border-gray-600 rounded-lg transition duration-300 flex items-center justify-center">
-                How It Works
+                {/* <Link
+                  to="how-to-work"
+                  smooth={true}
+                  duration={500}
+                  className="btn-scroll"
+                > */}
+                  How It Works
+                {/* </Link> */}
               </button>
             </div>
 
@@ -139,3 +147,4 @@ export const HeroSection = () => {
     </section>
   );
 };
+export default HeroSection;

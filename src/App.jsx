@@ -1,26 +1,12 @@
 import React from "react";
-import { HeroSection } from "./Componets/Home/HeroSection/heroSection";
 import { FantasyNavbar } from "./Componets/Home/Navbar/navbar";
 import { MyteamSection } from "./Componets/NavComponets/MyTeam/Myteam";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { LeaguesPage } from "./Componets/NavComponets/Leagues/Leagues";
+import HomeMain from "./Componets/Home/HomeMain/homeMain";
 
 function App() {
   const location = useLocation();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <>
@@ -29,10 +15,8 @@ function App() {
         <Route path="/myteam" element={<MyteamSection />} />
         <Route path="/leagues" element={<LeaguesPage />} />
       </Routes>
-      {location.pathname === "/" && <HeroSection />}
+      {location.pathname === "/" && <HomeMain />}
     </>
-
-    
   );
 }
 
