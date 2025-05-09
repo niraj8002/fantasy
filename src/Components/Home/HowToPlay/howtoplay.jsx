@@ -2,40 +2,40 @@ import React from "react";
 import { FaFutbol, FaUsers, FaTrophy, FaChartLine } from "react-icons/fa";
 import { GiSoccerKick } from "react-icons/gi";
 
-const HowItWork = () => {
+const HowItWork = ({ p, ref }) => {
   const steps = [
     {
       icon: <FaFutbol className="text-4xl text-yellow-400" />,
       title: "Select a Match",
       description:
-        "Choose from upcoming football matches to participate in. Different leagues and tournaments available.",
-      illustration: "👈 Pick your game",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dicta quis libero tarig fuilt saut!",
+      navigate: "👉 Pick your game",
     },
     {
       icon: <FaUsers className="text-4xl text-yellow-400" />,
       title: "Create Your Team",
       description:
-        "Build your dream team with a limited budget. Select players from both teams in the match.",
-      illustration: "⚽ 11 players within budget",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dicta quis libero tarig fuilt saut!",
+      navigate: "⛹️ 11 players within budget",
     },
     {
       icon: <GiSoccerKick className="text-4xl text-yellow-400" />,
       title: "Join Contests",
       description:
-        "Enter free or paid contests to compete against other managers. Higher stakes, bigger rewards!",
-      illustration: "🏆 Public/Private leagues",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dicta quis libero tarig fuilt saut!",
+      navigate: "🏆 Public/Private leagues",
     },
     {
       icon: <FaTrophy className="text-4xl text-yellow-400" />,
       title: "Win Prizes",
       description:
-        "Earn points based on your players' real-life performance. Top managers win cash prizes and bragging rights!",
-      illustration: "💰 Real money rewards",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat dicta quis libero tarig fuilt saut!",
+      navigate: "💰 Real money rewards",
     },
   ];
 
   return (
-    <section className="py-16 bg-gray-900 text-white">
+    <section className="py-16 bg-gray-900 text-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -63,7 +63,7 @@ const HowItWork = () => {
                 <p className="text-gray-300 mb-4">{step.description}</p>
 
                 <div className="mt-auto bg-gray-700/30 rounded-lg px-3 py-2 text-sm text-gray-300 border border-gray-600">
-                  {step.illustration}
+                  {step.navigate}
                 </div>
               </div>
             </div>

@@ -1,21 +1,96 @@
-import React from "react";
-import { FantasyNavbar } from "./Componets/Home/Navbar/navbar";
-import { MyteamSection } from "./Componets/NavComponets/MyTeam/Myteam";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { LeaguesPage } from "./Componets/NavComponets/Leagues/Leagues";
-import HomeMain from "./Componets/Home/HomeMain/homeMain";
+import React, { useContext, useEffect } from "react";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { MyteamSection } from "./Components/NavComponets/MyTeam/Myteam";
+import { LeaguesPage } from "./Components/NavComponets/Leagues/Leagues";
+import HomeMain from "./Components/Home/HomeMain/homeMain";
+import { FantasyNavbar } from "./Components/Home/Navbar/navbar";
+import LoginPage from "./Components/Log & sign/log-in/login";
+import { context } from "./context/context";
+import { ProtectedRoute } from "./Private-Route/private";
+import SignupPage from "./Components/Log & sign/sign-in/sign-in";
+import FantasyUserProfile from "./Components/userAccount/userAccount";
+
+const AuthRoute = ({ children }) => {
+  const { isAuthen } = useContext(context);
+  return isAuthen ? <Navigate to="/" replace /> : children;
+};
+
+const NotFound = () => {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold text-gray-800 mb-4">404 - Not Found</h1>
+      <p className="text-lg text-gray-600 mb-6">
+        The page you're looking for doesn't exist.
+      </p>
+      <button
+        onClick={() => window.history.back()}
+        className="px-6 py-2 bg-red-400 text-gray-800 rounded-md hover:bg-red-600 transition-colors"
+      >
+        Go to Home
+      </button>
+    </div>
+  );
+};
 
 function App() {
   const location = useLocation();
-
+  const hideComponents = ["/login", "/sign-in"];
+  const showComponents = !hideComponents.includes(location.pathname);
   return (
     <>
-      <FantasyNavbar />
+      <ProtectedRoute>{showComponents && <FantasyNavbar />}</ProtectedRoute>
       <Routes>
-        <Route path="/myteam" element={<MyteamSection />} />
-        <Route path="/leagues" element={<LeaguesPage />} />
+        <Route
+          path="/login"
+          element={
+            <AuthRoute>
+              <LoginPage />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/sign-in"
+          element={
+            <AuthRoute>
+              <SignupPage />
+            </AuthRoute>
+          }
+        />
+        {/* <Route
+          path="/useraccount"
+          element={
+            <ProtectedRoute>
+              <FantasyUserProfile />
+            </ProtectedRoute>
+          }
+        /> */}
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <HomeMain />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/myteam"
+          element={
+            <ProtectedRoute>
+              <MyteamSection />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leagues"
+          element={
+            <ProtectedRoute>
+              <LeaguesPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      {location.pathname === "/" && <HomeMain />}
     </>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlay, FaTrophy, FaUsers, FaChartLine } from "react-icons/fa";
 // import Link from "react-scroll";
 
-const HeroSection = () => {
+const HeroSection = ({onScrollToTeam}) => {
   return (
     <section className="relative bg-gray-900 text-white pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -27,15 +27,9 @@ const HeroSection = () => {
               <button className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 flex items-center justify-center">
                 <FaPlay className="mr-2" /> Join Now - It's Free!
               </button>
-              <button className="bg-transparent hover:bg-gray-800 text-white font-semibold py-3 px-6 border border-gray-600 rounded-lg transition duration-300 flex items-center justify-center">
-                {/* <Link
-                  to="how-to-work"
-                  smooth={true}
-                  duration={500}
-                  className="btn-scroll"
-                > */}
-                  How It Works
-                {/* </Link> */}
+              <button className="bg-transparent hover:bg-gray-800 text-white font-semibold py-3 px-6 border border-gray-600 rounded-lg transition duration-300 flex items-center justify-center"
+              onClick={onScrollToTeam}>
+                How It Works
               </button>
             </div>
 
@@ -65,7 +59,7 @@ const HeroSection = () => {
           </div>
 
           <div className="md:w-1/2 relative">
-            <div className="bg-gray-800/50 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 shadow-2xl transform rotate-1 hover:rotate-0 transition duration-500">
+            <div className="bg-gray-800/50 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 shadow-2xl transform rotate-1 hover:rotate-4 transition duration-500 ">
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -82,13 +76,13 @@ const HeroSection = () => {
                 <div className="flex items-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-yellow-400 mr-4">
                     <img
-                      src="https://resources.premierleague.com/premierleague/photos/players/250x250/p165153.png"
+                      src="https://tmssl.akamaized.net/images/foto/galerie/cristiano-ronaldo-al-nassr-2023-1692731063-114594.jpg"
                       alt="Player"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div>
-                    <h4 className="text-2xl font-bold">Mohamed Salah</h4>
+                    <h4 className="text-2xl font-bold">Cristiano ronaldo</h4>
                     <p className="text-gray-400">Liverpool | Forward</p>
                     <div className="flex mt-1">
                       <span className="bg-green-600 text-white text-xs px-2 py-1 rounded mr-2">

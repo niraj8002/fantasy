@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
+import { Link, Links, useNavigate } from "react-router-dom";
+import { context } from "../../../context/context";
 import {
   FaBars,
   FaTimes,
@@ -12,13 +14,14 @@ import {
   FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 export const FantasyNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const { setIsAuthen } = useContext(context);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +39,11 @@ export const FantasyNavbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleUserMenu = () => setUserMenuOpen(!userMenuOpen);
   const toggleNotifications = () => setNotificationsOpen(!notificationsOpen);
-
+  const logout = () => {
+    localStorage.removeItem("email");
+    setIsAuthen(false);
+    navigate("/login");
+  };
   const notifications = [
     {
       id: 1,
@@ -77,17 +84,20 @@ export const FantasyNavbar = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <Link to={"/"}
+                <Link
+                  to={"/"}
                   className="text-yellow-400 hover:bg-gray-800 px-3 py-2 rounded-md text-sm font-medium flex items-center"
                 >
                   <FaHome className="mr-1" /> Home
                 </Link>
-                <Link to={"myteam"}
+                <Link
+                  to={"myteam"}
                   className="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center"
                 >
                   <FaChartLine className="mr-1" /> My Team
                 </Link>
-                <Link to={"/leagues"}
+                <Link
+                  to={"/leagues"}
                   className="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center"
                 >
                   <FaUsers className="mr-1" /> Leagues
@@ -169,25 +179,26 @@ export const FantasyNavbar = () => {
                 </div>
 
                 {userMenuOpen && (
-                  <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-800 ring-1 ring-black ring-opacity-5">
-                    <a
-                      href="#"
+                  <div className="origin-top-right absolute right-0 mt-2 w-30 rounded-md shadow-lg py-1 bg-gray-800 ring-1 ring-black ring-opacity-5 flex justify-center flex-col">
+                    <button
+                      onClick={toggleUserMenu}
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
                     >
-                      <FaUser className="mr-2" /> Profile
-                    </a>
-                    <a
-                      href="#"
+                      <FaUser className="mr-2" />
+                      <Link to={"/useraccount"}>Profile</Link>
+                    </button>
+                    <button
+                      onClick={toggleUserMenu}
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
                     >
                       <FaCog className="mr-2" /> Settings
-                    </a>
-                    <a
-                      href="#"
+                    </button>
+                    <button
+                      onClick={logout}
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
                     >
                       <FaSignOutAlt className="mr-2" /> Sign out
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>
@@ -212,30 +223,30 @@ export const FantasyNavbar = () => {
       {isOpen && (
         <div className="md:hidden bg-gray-800">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="#"
+            <Link
+              to={"/"}
+              onClick={toggleMenu}
               className="text-yellow-400 hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium flex items-center"
             >
               <FaHome className="mr-2" /> Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to={"/myteam"}
+              onClick={toggleMenu}
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex items-center"
             >
               <FaChartLine className="mr-2" /> My Team
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to={"/leagues"}
+              onClick={toggleMenu}
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex items-center"
             >
               <FaUsers className="mr-2" /> Leagues
-            </a>
-            <a
-              href="#"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex items-center"
-            >
+            </Link>
+            <Link className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex items-center">
               <FaTrophy className="mr-2" /> Rankings
-            </a>
+            </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-gray-700">
             <div className="flex items-center px-5">
@@ -262,24 +273,24 @@ export const FantasyNavbar = () => {
               </button>
             </div>
             <div className="mt-3 px-2 space-y-1">
-              <a
-                href="#"
+              <button
+                onClick={toggleMenu}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
-                Your Profile
-              </a>
-              <a
-                href="#"
+                <Link to={"/useraccount"}>Profile</Link>
+              </button>
+              <button
+                onClick={toggleMenu}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
                 Settings
-              </a>
-              <a
-                href="#"
+              </button>
+              <button
+                onClick={logout}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
                 Sign out
-              </a>
+              </button>
             </div>
           </div>
         </div>
