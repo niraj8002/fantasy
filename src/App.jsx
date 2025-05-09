@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { MyteamSection } from "./Components/NavComponets/MyTeam/Myteam";
 import { LeaguesPage } from "./Components/NavComponets/Leagues/Leagues";
@@ -9,11 +9,6 @@ import { context } from "./context/context";
 import { ProtectedRoute } from "./Private-Route/private";
 import SignupPage from "./Components/Log & sign/sign-in/sign-in";
 import FantasyUserProfile from "./Components/userAccount/userAccount";
-
-const AuthRoute = ({ children }) => {
-  const { isAuthen } = useContext(context);
-  return isAuthen ? <Navigate to="/" replace /> : children;
-};
 
 const NotFound = () => {
   return (
@@ -33,37 +28,32 @@ const NotFound = () => {
 };
 
 function App() {
+  const { isAuthen } = useContext(context);
+  console.log(isAuthen);
+
   const location = useLocation();
   const hideComponents = ["/login", "/sign-in"];
   const showComponents = !hideComponents.includes(location.pathname);
   return (
     <>
-      <ProtectedRoute>{showComponents && <FantasyNavbar />}</ProtectedRoute>
+      {isAuthen ? <FantasyNavbar /> : null}
       <Routes>
         <Route
           path="/login"
-          element={
-            <AuthRoute>
-              <LoginPage />
-            </AuthRoute>
-          }
+          element={!isAuthen ? <LoginPage /> : <Navigate to="/" replace />}
         />
         <Route
-          path="/sign-in"
-          element={
-            <AuthRoute>
-              <SignupPage />
-            </AuthRoute>
-          }
+          path="/signin"
+          element={!isAuthen ? <SignupPage /> : <Navigate to="/" replace />}
         />
-        {/* <Route
+        <Route
           path="/useraccount"
           element={
             <ProtectedRoute>
               <FantasyUserProfile />
             </ProtectedRoute>
           }
-        /> */}
+        />
         <Route
           path="/"
           element={

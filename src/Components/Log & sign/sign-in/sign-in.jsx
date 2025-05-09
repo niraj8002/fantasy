@@ -67,6 +67,7 @@ const SignupPage = () => {
 
   const formSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (!validateForm()) {
       console.log("validation failed");
     }
