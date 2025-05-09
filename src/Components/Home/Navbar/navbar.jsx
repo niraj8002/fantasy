@@ -114,7 +114,7 @@ export const FantasyNavbar = () => {
 
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
-              {/* <div className="ml-3 relative">
+              <div className="ml-3 relative">
                 <button
                   onClick={toggleNotifications}
                   className="p-1 rounded-full text-gray-400 hover:text-white focus:outline-none relative"
@@ -158,10 +158,10 @@ export const FantasyNavbar = () => {
                     </a>
                   </div>
                 )}
-              </div> */}
+              </div>
 
               <div className="ml-3 relative">
-                {/* <div>
+                <div>
                   <button
                     onClick={toggleUserMenu}
                     className="max-w-xs flex items-center text-sm rounded-full focus:outline-none"
@@ -176,7 +176,7 @@ export const FantasyNavbar = () => {
                       Niraj
                     </span>
                   </button>
-                </div> */}
+                </div>
 
                 {userMenuOpen && (
                   <div className="origin-top-right absolute right-0 mt-2 w-30 rounded-md shadow-lg py-1 bg-gray-800 ring-1 ring-black ring-opacity-5 flex justify-center flex-col">
