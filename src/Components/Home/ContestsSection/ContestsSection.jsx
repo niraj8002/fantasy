@@ -1,5 +1,8 @@
-import React from "react";
-import { FaRegClock, FaUsers, FaTrophy, FaArrowRight } from "react-icons/fa";
+import React, { useEffect } from "react";
+import { FaRegClock, FaArrowRight } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 const ContestsSection = () => {
   const contests = [
@@ -21,6 +24,7 @@ const ContestsSection = () => {
       prizePool: "$1,000",
       spots: { filled: 8723, total: 10000 },
       contestType: "Mega Contest",
+      aos: "zoom-in-down",
     },
     {
       id: 2,
@@ -40,6 +44,7 @@ const ContestsSection = () => {
       prizePool: "$50,000",
       spots: { filled: 4231, total: 5000 },
       contestType: "Head-to-Head",
+      aos: "zoom-in-down",
     },
     {
       id: 3,
@@ -59,6 +64,7 @@ const ContestsSection = () => {
       prizePool: "$25,000",
       spots: { filled: 892, total: 2000 },
       contestType: "Winner Takes All",
+      aos: "zoom-in-down",
     },
     {
       id: 4,
@@ -78,13 +84,25 @@ const ContestsSection = () => {
       prizePool: "$10,000",
       spots: { filled: 6543, total: 8000 },
       contestType: "50-50",
+      aos: "zoom-in-down",
     },
   ];
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  },[]);
 
   return (
     <section className="py-16 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+        <div
+          className="flex flex-col md:flex-row justify-between items-center mb-12"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-duration="500"
+        >
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-2">
               <span className="text-yellow-400">Live</span> & Upcoming Contests
@@ -102,14 +120,15 @@ const ContestsSection = () => {
           {contests.map((contest) => (
             <div
               key={contest.id}
-              className={`bg-gray-800 rounded-xl overflow-hidden border ${
+              className={`bg-gray-800 rounded-xl overflow-hidden border  ${
                 contest.status === "Live"
                   ? "border-green-500"
                   : "border-gray-700"
               } hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+              data-aos={contest.aos}
             >
               <div
-                className={`absolute top-4 right-0 px-3 py-1 text-xs font-bold ${
+                className={`absolute top-0 right-0 px-3 py-1 text-xs font-bold ${
                   contest.status === "Live" ? "bg-green-600" : "bg-yellow-500"
                 } text-white`}
               >
