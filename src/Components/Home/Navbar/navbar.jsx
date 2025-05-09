@@ -90,8 +90,7 @@ export const FantasyNavbar = () => {
                 >
                   <FaHome className="mr-1" /> Home
                 </Link>
-                <Link
-                  to={"myteam"}
+                <Link to={"/myteam"}
                   className="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center"
                 >
                   <FaChartLine className="mr-1" /> My Team
