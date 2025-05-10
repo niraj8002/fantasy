@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import MyTeam from "./Components/NavComponets/MyTeam/Myteam";
 import { LeaguesPage } from "./Components/NavComponets/Leagues/Leagues";
 import HomeMain from "./Components/Home/HomeMain/homeMain";
@@ -32,9 +32,9 @@ function App() {
   const { isAuthen } = useContext(context);
   console.log(isAuthen);
 
-  const location = useLocation();
-  const hideComponents = ["/login", "/sign-in"];
-  const showComponents = !hideComponents.includes(location.pathname);
+  // const location = useLocation();
+  // const hideComponents = ["/login", "/sign-in"];
+  // const showComponents = !hideComponents.includes(location.pathname);
   return (
     <>
       {isAuthen ? <FantasyNavbar /> : null}
