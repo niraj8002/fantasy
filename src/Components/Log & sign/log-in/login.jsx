@@ -16,6 +16,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const res = await fetch("https://bgc-omega.vercel.app/api/login", {
         method: "POST",
@@ -191,7 +192,7 @@ const LoginPage = () => {
               <div className="text-sm text-center text-gray-600">
                 Don't have an account?{" "}
                 <Link
-                  to={"/sign-in"}
+                  to={"/signin"}
                   href="#"
                   className="font-medium text-yellow-600 hover:text-yellow-500"
                 >
