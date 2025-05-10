@@ -1,11 +1,7 @@
 import React from "react";
-import { FantasyNavbar } from "./Componets/Home/Navbar/navbar";
-import { MyteamSection } from "./Componets/NavComponets/MyTeam/Myteam";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { LeaguesPage } from "./Componets/NavComponets/Leagues/Leagues";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { MyteamSection } from "./Components/NavComponets/MyTeam/Myteam";
+import MyTeam from "./Components/NavComponets/MyTeam/Myteam";
 import { LeaguesPage } from "./Components/NavComponets/Leagues/Leagues";
 import HomeMain from "./Components/Home/HomeMain/homeMain";
 import { FantasyNavbar } from "./Components/Home/Navbar/navbar";
@@ -72,7 +68,7 @@ function App() {
           path="/myteam"
           element={
             <ProtectedRoute>
-              <MyteamSection />
+              <MyTeam />
             </ProtectedRoute>
           }
         />
