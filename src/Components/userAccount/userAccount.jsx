@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { FaUserEdit } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-
+import { context } from "../../context/context";
 
 const FantasyUserProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const userDetails = JSON.parse(localStorage.getItem("user"));
+  console.log(userDetails);
+  
+  
+  // username: "FantasyKing",
+  // name: "Niraj kumawat",
+  // email: "niraj@example.com",
   const [userData, setUserData] = useState({
-    username: "FantasyKing",
-    name: "Niraj kumawat",
-    email: "niraj@example.com",
     phone: "+91 8003767732",
     favoriteTeam: "Mumbai Indians",
     playingSince: "2018",
@@ -117,7 +121,7 @@ const FantasyUserProfile = () => {
                     Full Name
                   </label>
                   {!isEditing ? (
-                    <p className="text-gray-900">{userData.name}</p>
+                    <p className="text-gray-900">{userDetails.username}</p>
                   ) : (
                     <input
                       type="text"
@@ -134,7 +138,7 @@ const FantasyUserProfile = () => {
                     Email
                   </label>
                   {!isEditing ? (
-                    <p className="text-gray-900">{userData.email}</p>
+                    <p className="text-gray-900">{userDetails.email}</p>
                   ) : (
                     <input
                       type="email"
@@ -244,7 +248,8 @@ const FantasyUserProfile = () => {
                   onClick={savedeta}
                   className="flex justify-center items-center gap-1 px-3 py-1 bg-yellow-500 text-gray-900 rounded-md hover:bg-gray-500 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-colors font-medium"
                 >
-                  <FiSend/>Save Changes
+                  <FiSend />
+                  Save Changes
                 </button>
               </div>
             )}

@@ -40,7 +40,7 @@ export const FantasyNavbar = () => {
   const toggleUserMenu = () => setUserMenuOpen(!userMenuOpen);
   const toggleNotifications = () => setNotificationsOpen(!notificationsOpen);
   const logout = () => {
-    localStorage.removeItem("email");
+    localStorage.removeItem("user");
     setIsAuthen(false);
     navigate("/login");
   };
@@ -184,7 +184,7 @@ export const FantasyNavbar = () => {
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
                     >
                       <FaUser className="mr-2" />
-                      <Link to={"/useraccount"}>Profile</Link>
+                      <Link to={"/#"}>Profile</Link>
                     </button>
                     <button
                       onClick={toggleUserMenu}
@@ -276,7 +276,7 @@ export const FantasyNavbar = () => {
                 onClick={toggleMenu}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
-                <Link to={"/useraccount"}>Profile</Link>
+                <Link to={"/#"}>Profile</Link>
               </button>
               <button
                 onClick={toggleMenu}

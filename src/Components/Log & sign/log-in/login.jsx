@@ -29,7 +29,7 @@ const LoginPage = () => {
       if (res.ok) {
         setIsLoading(true);
         toast.success(data.message);
-        localStorage.setItem("email", email, "password", password);
+        localStorage.setItem("user", JSON.stringify(data.user));
         setTimeout(() => {
           setIsAuthen(true);
           setIsLoading(false);
@@ -41,6 +41,7 @@ const LoginPage = () => {
         return;
       }
     } catch (error) {
+      setIsLoading(false);
       toast.error("Invalid email or password");
     }
   };
@@ -78,6 +79,8 @@ const LoginPage = () => {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
@@ -102,6 +105,8 @@ const LoginPage = () => {
                     type={showPassword ? "text" : "password"}
                     id="password"
                     value={password}
+                    name="password"
+                    autoComplete="current-password"
                     onChange={(e) => setPassword(e.target.value)}
                     className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
                     placeholder="••••••••"

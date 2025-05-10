@@ -30,7 +30,7 @@ const NotFound = () => {
 
 function App() {
   const { isAuthen } = useContext(context);
-  console.log(isAuthen);
+  // console.log(isAuthen);
 
   // const location = useLocation();
   // const hideComponents = ["/login", "/sign-in"];

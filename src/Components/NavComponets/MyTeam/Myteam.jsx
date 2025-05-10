@@ -96,7 +96,6 @@ const MyTeam = () => {
                   <li>Blogs, Rankings, and Opportunities</li>
                   <li>Developed by Future Profilez Pvt. Ltd.</li>
                 </ul>
-                {/* continue other sections */}
               </div>
             </details>
 
