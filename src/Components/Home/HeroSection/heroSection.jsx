@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlay, FaTrophy, FaUsers, FaChartLine } from "react-icons/fa";
 // import Link from "react-scroll";
 
-const HeroSection = ({onScrollToTeam}) => {
+const HeroSection = ({ onScrollToTeam, onScrollToContest }) => {
   return (
     <section className="relative bg-gray-900 text-white pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -24,11 +24,16 @@ const HeroSection = ({onScrollToTeam}) => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 flex items-center justify-center">
+              <button
+                className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 flex items-center justify-center"
+                onClick={onScrollToContest}
+              >
                 <FaPlay className="mr-2" /> Join Now - It's Free!
               </button>
-              <button className="bg-transparent hover:bg-gray-800 text-white font-semibold py-3 px-6 border border-gray-600 rounded-lg transition duration-300 flex items-center justify-center"
-              onClick={onScrollToTeam}>
+              <button
+                className="bg-transparent hover:bg-gray-800 text-white font-semibold py-3 px-6 border border-gray-600 rounded-lg transition duration-300 flex items-center justify-center"
+                onClick={onScrollToTeam}
+              >
                 How It Works
               </button>
             </div>

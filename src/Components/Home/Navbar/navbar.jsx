@@ -64,7 +64,7 @@ export const FantasyNavbar = () => {
       read: true,
     },
   ];
-
+  // ("i am create a fantacy sport website in react js with using tailwind css now i want create a Rewards & Benefits section and in this 'What users gain: Real cash prizes, Referral bonuses, Daily rewards Can use icon grid or infographic' please create this page and make sure is fully responsive and also make use of tailwind css");
   const unreadCount = notifications.filter((n) => !n.read).length;
 
   return (
@@ -90,7 +90,8 @@ export const FantasyNavbar = () => {
                 >
                   <FaHome className="mr-1" /> Home
                 </Link>
-                <Link to={"/myteam"}
+                <Link
+                  to={"/myteam"}
                   className="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center"
                 >
                   <FaChartLine className="mr-1" /> My Team
@@ -184,7 +185,7 @@ export const FantasyNavbar = () => {
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center"
                     >
                       <FaUser className="mr-2" />
-                      <Link to={"/#"}>Profile</Link>
+                      <Link to={"/useraccount"}>Profile</Link>
                     </button>
                     <button
                       onClick={toggleUserMenu}
@@ -276,7 +277,7 @@ export const FantasyNavbar = () => {
                 onClick={toggleMenu}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
               >
-                <Link to={"/#"}>Profile</Link>
+                <Link to={"/useraccount"}>Profile</Link>
               </button>
               <button
                 onClick={toggleMenu}

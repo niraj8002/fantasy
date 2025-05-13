@@ -122,7 +122,7 @@ const SignupPage = () => {
           error = "Password is required";
         } else if (value.length < 8) {
           error = "Password must be at least 8 characters";
-        } else if (!/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(value)) {
+        } else if (!/(?=.*[0-9])(?=.*[!@#$%^&*])/.test(value)) {
           error = "Must include uppercase, number & special character";
         }
         break;
