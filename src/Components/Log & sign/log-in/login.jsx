@@ -27,6 +27,7 @@ const LoginPage = () => {
       });
       const data = await res.json();
       if (res.ok) {
+        console.log(data.user);
         setIsLoading(true);
         toast.success(data.message);
         localStorage.setItem("user", JSON.stringify(data.user));
@@ -48,7 +49,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <Toaster position="top-center" />
+      <Toaster />
       <div className="min-h-screen bg-[url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center  flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <div className="bg-white rounded-lg shadow-2xl overflow-hidden">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaTrophy,
   FaCalendarAlt,
@@ -8,6 +8,8 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import fc from "../../../assets/fc.jpg";
+import AOS from "aos";
+import 'aos/dist/aos.css';
 
 const Tournaments = () => {
   const [activeTab, setActiveTab] = useState("all");
@@ -24,6 +26,7 @@ const Tournaments = () => {
       status: "upcoming",
       city: "Mumbai",
       image: fc,
+      aos:"zoom-in-down"
     },
     {
       id: 2,
@@ -35,6 +38,7 @@ const Tournaments = () => {
       status: "ongoing",
       city: "Delhi",
       image: fc,
+      aos:"zoom-in-down"
     },
     {
       id: 3,
@@ -46,6 +50,7 @@ const Tournaments = () => {
       status: "completed",
       city: "Bangalore",
       image: fc,
+      aos:"zoom-in-down"
     },
     {
       id: 4,
@@ -57,6 +62,7 @@ const Tournaments = () => {
       status: "upcoming",
       city: "Hyderabad",
       image: fc,
+      aos:"zoom-in-down"
     },
     {
       id: 5,
@@ -68,6 +74,7 @@ const Tournaments = () => {
       status: "completed",
       city: "Chennai",
       image: fc,
+      aos:"zoom-in-down"
     },
     {
       id: 6,
@@ -79,6 +86,7 @@ const Tournaments = () => {
       status: "upcoming",
       city: "Kolkata",
       image: fc,
+      aos:"zoom-in-down"
     },
   ];
 
@@ -89,16 +97,22 @@ const Tournaments = () => {
     const cityMatch = activeCity === "all" || t.city === activeCity;
     return statusMatch && cityMatch;
   });
+  useEffect(()=>{
+    AOS.init({
+      duration:500,
+      once:false,
+    })
+  })
 
   return (
     <div className="bg-gray-900 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-600 mb-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-600 mb-3" data-aos="fade-right">
             Tournaments Organized by
-            <span className="text-yellow-500">TennisKhelo</span>
+            <span className="text-yellow-500">FantacyFC</span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto"  data-aos="fade-left">
             Compete in exciting fantasy tennis tournaments across India
           </p>
         </div>
@@ -178,6 +192,7 @@ const Tournaments = () => {
               <div
                 key={tournament.id}
                 className="bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                data-aos={tournament.aos}
               >
                 <div className="h-40 bg-gray-200 relative">
                   <img
